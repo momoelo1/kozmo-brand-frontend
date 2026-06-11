@@ -35,7 +35,7 @@ const Login = () => {
       dispatch(setUser(logUser));
       await dispatch(cartProducts());
       dispatch(setNotification("Successfully logged in!", "success"));
-      const from = "/";
+      const from = location.state?.from?.pathname || "/";
       navigate(from);
     } catch {
       dispatch(setNotification("Invalid username or password", "error"));
