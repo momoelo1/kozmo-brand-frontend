@@ -14,6 +14,19 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+axiosInstance.interceptors.request.use((config) => {
+  try {
+    const stored = window.localStorage.getItem("loggedUser");
+    if (stored) {
+      const user = JSON.parse(stored);
+      if (user?.accessToken) {
+        config.headers.Authorization = `Bearer ${user.accessToken}`;
+      }
+    }
+  } catch {}
+  return config;
+});
+
 // Create a function to handle logout
 const handleLogout = (message) => {
   window.localStorage.removeItem("loggedUser");
