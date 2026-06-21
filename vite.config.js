@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
@@ -8,12 +8,19 @@ export default defineConfig(({ mode }) => {
     base: mode === "production" ? "/kozmo-brand-frontend/" : "/",
 
     plugins: [react()],
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: "./src/test/setup.js",
+      css: false,
+    },
     server: {
       host: "0.0.0.0",
       proxy: {
         "/api": {
           target: "http://localhost:3001",
           changeOrigin: true,
+          xfwd: true,
           secure: false,
         },
       },

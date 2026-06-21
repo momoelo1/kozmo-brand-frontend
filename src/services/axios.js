@@ -34,8 +34,7 @@ const handleLogout = (message) => {
   store.dispatch(clearCart());
   store.dispatch(clearProducts());
   store.dispatch(setNotification(message, "info"));
-  // Force a page reload to ensure all UI components are reset
-  window.location.href = "/";
+  window.location.hash = "#/";
 };
 
 axiosInstance.interceptors.response.use(

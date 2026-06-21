@@ -36,17 +36,6 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get("payment") !== "success") return;
-    const order = params.get("order");
-    const msg = order
-      ? `Payment confirmed — ${decodeURIComponent(order)}`
-      : "Payment successful! Your order is confirmed.";
-    dispatch(setNotification(msg, "success"));
-    navigate("/", { replace: true });
-  }, [location.search, dispatch, navigate]);
-
-  useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
