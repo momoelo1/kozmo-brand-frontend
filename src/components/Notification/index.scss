@@ -1,5 +1,6 @@
 .valid, .error {
   position: fixed;
+  pointer-events: none;
   top: 8rem;
   right: 20px;
   transform: none;
