@@ -289,6 +289,23 @@
     font-style: italic;
   }
 
+  .user-menu-admin {
+    display: block;
+    width: 100%;
+    padding: 0.65rem 1.1rem;
+    color: #ffb84d;
+    font-size: 0.84rem;
+    font-weight: 600;
+    text-align: left;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease;
+
+    &:hover {
+      background: rgba(255, 184, 77, 0.08);
+      color: #ffca6e;
+    }
+  }
+
   .user-menu-logout {
     display: block;
     width: 100%;

@@ -149,6 +149,17 @@ const Sidebar = () => {
                     )}
                   </Link>
 
+                  {loggedUser.isAdmin && (
+                    <Link
+                      className="user-menu-admin"
+                      to="/admin"
+                      onClick={() => setShowUserMenu(false)}
+                      role="menuitem"
+                    >
+                      Admin
+                    </Link>
+                  )}
+
                   <button
                     className="user-menu-logout"
                     onClick={handleLogout}

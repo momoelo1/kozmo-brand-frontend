@@ -17,6 +17,7 @@ const Cart = lazy(() => import("./components/Cart"));
 const Social = lazy(() => import("./components/Social"));
 const Terms = lazy(() => import("./components/Terms"));
 const Success = lazy(() => import("./components/Success"));
+const Admin = lazy(() => import("./components/Admin"));
 
 function App() {
   const loggedUser = useSelector((state) => state.loggedUser);
@@ -139,6 +140,7 @@ function App() {
             <Route path="/social" element={<Social />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/success" element={<Success />} />
+            <Route path="/admin" element={<Admin />} />
           </Route>
         </Routes>
       </Suspense>
