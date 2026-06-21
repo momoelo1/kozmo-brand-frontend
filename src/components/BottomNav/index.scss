@@ -217,6 +217,25 @@
     color: rgba(255, 255, 255, 0.25);
   }
 
+  .bnav-panel-admin {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: rgba(255, 184, 77, 0.12);
+    border: 1px solid rgba(255, 184, 77, 0.3);
+    color: #ffb84d;
+    padding: 0.5rem 1.1rem;
+    border-radius: 7px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: background 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      background: rgba(255, 184, 77, 0.2);
+    }
+  }
+
   .bnav-panel-logout {
     background: transparent;
     border: 1px solid rgba(255, 184, 77, 0.45);

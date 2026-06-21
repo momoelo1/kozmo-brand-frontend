@@ -108,6 +108,17 @@ const BottomNav = () => {
             }
           </div>
 
+          {loggedUser.isAdmin && (
+            <Link
+              className="bnav-panel-admin"
+              to="/admin"
+              role="menuitem"
+              onClick={() => setShowPanel(false)}
+            >
+              Admin
+            </Link>
+          )}
+
           <button className="bnav-panel-logout" onClick={handleLogout} role="menuitem">
             Logout
           </button>
