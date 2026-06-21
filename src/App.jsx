@@ -29,7 +29,9 @@ function App() {
   const isSubscribePage = location.pathname === "/subscribe";
   const isSocialPage = location.pathname === "/social";
   const isTermsPage = location.pathname === "/terms";
-  const isCardPage = isLoginPage || isSubscribePage || isSocialPage || isTermsPage;
+  const isSuccessPage = location.pathname === "/success";
+  const isCardPage =
+    isLoginPage || isSubscribePage || isSocialPage || isTermsPage || isSuccessPage;
 
   useEffect(() => {
     dispatch(fetchRates());

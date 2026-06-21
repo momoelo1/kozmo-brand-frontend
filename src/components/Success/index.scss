@@ -1,10 +1,10 @@
-.success-view {
-  min-height: calc(100vh - 7rem);
+.auth-view {
+  height: calc(100vh - 7rem);
   margin-top: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 0 1rem;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
@@ -15,26 +15,19 @@
     right: 0;
     height: auto;
     margin-top: 0;
-    overflow-y: auto;
-    align-items: flex-start;
-    padding-top: 2rem;
   }
 }
 
-.success-card {
+.login-card {
   width: 100%;
-  max-width: 460px;
+  max-width: 420px;
   background: rgba(18, 18, 18, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 184, 77, 0.2);
   border-radius: 16px;
-  padding: 3rem 2.5rem 2.5rem;
+  padding: 2.5rem;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
   opacity: 0;
   transform: translateY(18px) scale(0.97);
   transition: opacity 0.4s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -45,58 +38,68 @@
   }
 
   @media (max-width: 480px) {
-    padding: 2.5rem 1.5rem 2rem;
+    padding: 2rem 1.5rem;
   }
 }
 
+.login-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-heading {
+  margin: 0 0 0.4rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.login-sub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.login-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: 50px;
+  background: linear-gradient(135deg, #ffb84d 0%, #ff9500 100%);
+  border: none;
+  border-radius: 10px;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: linear-gradient(135deg, #ffca6e 0%, #ffb84d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 184, 77, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+/* ── Success-only content inside the shared card ── */
 .success-icon-wrap {
-  margin-bottom: 1.75rem;
+  text-align: center;
+  margin-bottom: 1.25rem;
 }
 
 .success-icon {
   width: 3.5rem;
   height: 3.5rem;
   opacity: 0.9;
-}
-
-.success-header {
-  margin-bottom: 1.25rem;
-}
-
-.success-heading {
-  margin: 0 0 0.4rem;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.3px;
-}
-
-.success-sub {
-  margin: 0;
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.success-ref {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.28);
-  letter-spacing: 1px;
-  margin: 0 0 1.25rem;
-  text-transform: uppercase;
-
-  span {
-    color: rgba(255, 184, 77, 0.55);
-    font-family: monospace;
-    letter-spacing: 2px;
-  }
-}
-
-.success-note {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.38);
-  line-height: 1.65;
-  margin: 0 0 2rem;
-  max-width: 320px;
 }
 
 .success-order {
@@ -153,28 +156,33 @@
   }
 }
 
-.success-btn {
-  display: inline-block;
-  padding: 0.85rem 2.5rem;
-  background: linear-gradient(135deg, #ffb84d 0%, #ff9500 100%);
-  color: #1a1a1a;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  letter-spacing: 0.4px;
+.success-ref {
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 1px;
+  margin: 0 0 1.25rem;
   text-transform: uppercase;
-  transition: all 0.2s ease;
-  user-select: none;
 
-  &:hover {
-    background: linear-gradient(135deg, #ffca6e 0%, #ffb84d 100%);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(255, 184, 77, 0.3);
+  span {
+    color: rgba(255, 184, 77, 0.55);
+    font-family: monospace;
+    letter-spacing: 2px;
   }
+}
 
-  &:active {
-    transform: translateY(0);
-    box-shadow: none;
+.success-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.65;
+  margin: 0 auto 1.5rem;
+  max-width: 320px;
+}
+
+/* let a long order list scroll within the fixed mobile card region */
+.auth-view.success-view {
+  @media (max-width: 768px) {
+    overflow-y: auto;
   }
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import ordersService from "../../services/orders";
 import { clearCart } from "../../reducers/cartReducer";
@@ -16,6 +16,7 @@ const Success = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("session_id");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currency = useSelector((state) => state.currency.selected);
 
   useEffect(() => {
@@ -27,10 +28,12 @@ const Success = () => {
     return () => clearTimeout(t);
   }, []);
 
-  // Payment succeeded — empty the cart.
+  // Payment succeeded — empty the cart on arrival and again once the order is
+  // confirmed (which proves the webhook ran and cleared the server-side cart,
+  // beating any re-fetch race).
   useEffect(() => {
     dispatch(clearCart());
-  }, [dispatch]);
+  }, [dispatch, status]);
 
   // Fetch the persisted order, retrying for the webhook race.
   useEffect(() => {
@@ -68,9 +71,9 @@ const Success = () => {
     `${currency.symbol}${((cents / 100) * currency.rate).toFixed(2)}`;
 
   return (
-    <div className="success-view">
+    <div className="auth-view success-view">
       <Notification />
-      <div className={`success-card${cardReady ? " card-ready" : ""}`}>
+      <div className={`login-card${cardReady ? " card-ready" : ""}`}>
         <div className="success-icon-wrap">
           <svg className="success-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true">
             <circle cx="26" cy="26" r="25" stroke="#ffb84d" strokeWidth="1.5" />
@@ -78,14 +81,12 @@ const Success = () => {
           </svg>
         </div>
 
-        <div className="success-header">
-          <h1 className="success-heading">Order Confirmed</h1>
-          <p className="success-sub">Thank you for your purchase.</p>
+        <div className="login-header">
+          <h1 className="login-heading">Order Confirmed</h1>
+          <p className="login-sub">Thank you for your purchase.</p>
         </div>
 
-        {status === "loading" && (
-          <p className="success-note">Loading your order…</p>
-        )}
+        {status === "loading" && <p className="success-note">Loading your order…</p>}
 
         {status === "loaded" && order && (
           <div className="success-order">
@@ -124,9 +125,9 @@ const Success = () => {
           </p>
         )}
 
-        <Link to="/" className="success-btn">
+        <button type="button" className="login-btn" onClick={() => navigate("/")}>
           Back to Shop
-        </Link>
+        </button>
       </div>
     </div>
   );
