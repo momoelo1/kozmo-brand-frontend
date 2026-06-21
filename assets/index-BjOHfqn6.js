@@ -1,0 +1,1 @@
+import{j as t}from"./index-BUF1Sp8N.js";import{u as s}from"./redux-B7FVFTgF.js";import{f as i}from"./vendor-ls2LaaPh.js";const m=({className:r=""})=>{const o=s(e=>e.notification);return o.message?i.createPortal(t.jsx("div",{className:"".concat(o.type==="success"?"valid":"error"," ").concat(r),children:t.jsx("h2",{children:o.message})}),document.body):null};export{m as N};
